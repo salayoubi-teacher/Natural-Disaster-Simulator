@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+body { margin: 0; overflow: hidden; background-color: #0f172a; color: #f8fafc; font-family: system-ui, -apple-system, sans-serif; user-select: none; }
+#canvas-container { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; outline: none; }
+.glass-panel { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); z-index: 10; position: relative; }
+.mode-btn.active { background-color: #3b82f6 !important; color: white !important; border-color: #60a5fa !important; }
+#crosshair { position: absolute; top: 50%; left: 50%; width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.2); transform: translate(-50%, -50%); pointer-events: none; z-index: 5; display: none; }
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -20px); }
+    10% { opacity: 1; transform: translate(-50%, 0); }
+    90% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, -20px); }
+}
+.toast-animate { animation: fadeInOut 3s forwards; }
