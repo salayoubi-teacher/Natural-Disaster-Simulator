@@ -383,6 +383,7 @@ export function onMouseMove(event: any) {
             positions[3] = targetPos.x; positions[4] = targetPos.y; positions[5] = targetPos.z;
             state.tempLine.geometry.setDrawRange(0, 2);
             state.tempLine.geometry.attributes.position.needsUpdate = true;
+            state.tempLine.computeLineDistances();
         }
     } else if (state.mode === 'panel' && state.placingPanelNodes.length > 0) {
         const nodeMeshes = state.nodes.map((n: any) => n.mesh);
@@ -404,6 +405,7 @@ export function onMouseMove(event: any) {
             
             state.tempLine.geometry.setDrawRange(0, state.placingPanelNodes.length + 2);
             state.tempLine.geometry.attributes.position.needsUpdate = true;
+            state.tempLine.computeLineDistances();
         }
     }
 
@@ -1158,7 +1160,7 @@ export function initEngine(container: HTMLElement) {
     state.ghostShapeGroup = new THREE.Group();
     state.scene.add(state.ghostShapeGroup);
 
-    const lineMat = new THREE.LineBasicMaterial({ color: 0x3b82f6, dashed: true });
+    const lineMat = new THREE.LineDashedMaterial({ color: 0x3b82f6, dashSize: 3, gapSize: 1 });
     const lineGeo = new THREE.BufferGeometry().setFromPoints([
         new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), 
         new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()
