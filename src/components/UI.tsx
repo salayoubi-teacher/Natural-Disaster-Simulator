@@ -401,7 +401,7 @@ export default function UI() {
                         </div>
                         <div className="flex justify-between items-center mb-1">
                             <label className="text-[10px] text-slate-400">Time Speed (<span id="time-scale-val" className="font-mono text-blue-400">1.00</span>x):</label>
-                            <input type="range" id="time-scale" min="0.25" max="2.0" step="0.25" defaultValue="1.0" className="w-24 accent-blue-500" onChange={(e) => {
+                            <input type="range" id="time-scale" min="0.1" max="2.0" step="0.05" defaultValue="1.0" className="w-24 accent-blue-500" onChange={(e) => {
                                 const val = document.getElementById('time-scale-val');
                                 if (val) val.innerText = parseFloat(e.target.value).toFixed(2);
                             }}/>
